@@ -1,0 +1,10 @@
+This is BibTeX, Version 0.99dThe top-level auxiliary file: dukumentation.aux
+The style file: alphadin.bst
+I couldn't open database file mybibliography.bib
+---line 35 of file dukumentation.aux
+ : \bibdata{mybibliography
+ :                        }
+I'm skipping whatever remains of this command
+I found no \citation commands---while reading file dukumentation.aux
+I found no database files---while reading file dukumentation.aux
+(There were 3 error messages)

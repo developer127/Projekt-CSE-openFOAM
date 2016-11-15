@@ -1,0 +1,317 @@
+%%
+%% Dokumentenart
+%%
+\NeedsTeXFormat{LaTeX2e}
+\documentclass[
+    a4paper,
+    BCOR32mm,
+    10pt,
+    bibliography=totoc,
+    twoside,
+    openright,
+    numbers=noenddot,
+    headings=normal,
+    DIV=9,
+    parskip
+    %,draft
+]{scrbook}
+
+
+%%
+%% Unterstützung für deutsche Sprache, Umlaute etc.
+%%
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage[babel,german=quotes]{csquotes}
+
+
+%%
+%% Diverse Pakete
+%%
+\usepackage{scrhack}
+\usepackage{graphicx}
+\usepackage{verbatim}
+\usepackage{tabularx}
+\usepackage{subfig}
+\usepackage{url}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+%\usepackage{amsthm}
+\usepackage{setspace}
+\usepackage{listings}
+\usepackage{colortbl}
+%\usepackage{showframe} % Seitenspiegel anzeigen
+\usepackage{microtype}
+%\usepackage{multicol}
+%\usepackage[amsmath,thmmarks,hyperref]{ntheorem}
+\usepackage{ntheorem}
+
+\usepackage{siunitx} % SI einheiten
+\sisetup{
+	locale = DE ,
+	per-mode = symbol
+}
+
+\usepackage{todonotes}
+\usepackage[numbers]{natbib} % zusätzlicher Bibliographiestil
+\usepackage{hyperref} % muss letztes Paket in der Liste sein
+
+
+%%
+%% hier Namen etc. einsetzen
+%%
+\newcommand{\fullname}{Florian, Samuel, Jonas}
+\newcommand{\email}{oberle@mail.hs-ulm.de}
+\newcommand{\titel}{Projekt-CSE-openFOAM}
+\newcommand{\subtitel}{}
+\newcommand{\jahr}{2016}
+\newcommand{\matnr}{}
+%\newcommand{\betreuer}{}
+%\newcommand{\fakultaet}{Ingenieurwissenschaften, Informatik und Psychologie}
+\newcommand{\fakultaet}{Mathematik und Wirtschaftswissenschaften}
+%\newcommand{\fakultaet}{Naturwissenschaften}
+%\newcommand{\fakultaet}{Medizin}
+%\newcommand{\institut}{Institut für Irgendetwas}
+%\newcommand{\arbeit}{Diplomarbeit}
+\newcommand{\arbeit}{Projektarbeit}
+%\newcommand{\arbeit}{Masterarbeit}
+
+
+%%
+%% Setzt Autor und Titel in den Metadaten des erzeugten Dokumentes
+%%
+\pdfinfo{
+    /Author (\fullname)
+    /Title (\titel)
+    /Producer (pdfeTex 3.14159-1.30.6-2.2)
+    /Keywords ()
+}
+\hypersetup{
+    pdftitle=\titel,
+    pdfauthor=\fullname,
+    pdfsubject={\arbeit},
+    pdfproducer={pdfeTex 3.14159-1.30.6-2.2},
+    colorlinks=false,
+    pdfborder=0 0 0
+}
+
+
+%%
+%% Tiefe, bis zu der Überschriften in das Inhaltsverzeichnis kommen
+%%
+\setcounter{tocdepth}{3}
+
+
+%%
+%% Verhindert überhängende Absatzteile
+%%
+\clubpenalty10000
+\widowpenalty10000
+\displaywidowpenalty=10000
+
+
+%%
+%% Einstellungen für Codelistings
+%%
+\lstset{
+    language=C++,
+    showstringspaces=false,
+    frame=single,
+    numbers=left,
+    basicstyle=\ttfamily,
+    numberstyle=\tiny
+}
+
+
+%%
+%% Formatierung des Literaturverzeichnisses
+%%
+%\bibliographystyle{plaindin} % Nummern und alphabetisch sortiert
+%\bibliographystyle{plainnat} % Nummern und alphabetisch sortiert, URL, DOI etc. in der Angabe
+\bibliographystyle{alphadin} % Buchstaben und sortiert
+%\bibliographystyle{abbrvdin} % Nummern und abgekürzte Namen
+%\bibliographystyle{unsrtdin} % Nummern und unsortiert
+
+
+%%
+%% Eigene Makros
+%%
+
+%-------------------------------------------------------------------------------
+%                Deklaration der Bemerkungsumgebung
+%					benötigt das theorem paket
+%-------------------------------------------------------------------------------
+\theoremstyle{marginbreak}
+\theoremseparator{:}
+%\theorembodyfont{\notefont}
+%\theoremheaderfont{\notefonthead}
+\newtheorem{defi}{Definition}[subsection]
+
+
+%%
+%% Eigene Farben
+%%
+\definecolor{Gray}{rgb}{0.80784, 0.86667, 0.90196} %dunkelblau
+\definecolor{Lightgray}{rgb}{0.9176, 0.95, 0.95686} %hellblau
+\definecolor{Akzent}{rgb}{0.6627, 0.63529, 0.55294} %akzentfarbe
+
+
+%%
+%% Liniendicke in Tabellen etc.
+%%
+\setlength{\arrayrulewidth}{0.1pt}
+
+
+%%
+%% Schriftarten
+%%
+\renewcommand{\sfdefault}{phv}
+\renewcommand{\rmdefault}{phv}
+\renewcommand{\ttdefault}{pcr}
+\KOMAoptions{DIV=last}
+
+
+%%
+%% Seitenlayout
+%%
+\pagestyle{headings}
+
+
+%%
+%% Trennungsregeln
+%%
+\hyphenation{Sil-ben-trenn-ung}
+
+
+%%
+%% Schönere Bullets bei Aufzählungen
+%%
+\renewcommand{\labelitemi}{$\bullet$}
+\renewcommand{\labelitemii}{$\circ$}
+\renewcommand{\labelitemiii}{$\cdot$}
+
+
+%%
+%% Beginn des eigentlichen Dokumentes
+%%
+\begin{document}
+
+
+%%
+%% Vorspann
+%%
+\frontmatter
+
+
+%%
+%% Titelseite
+%%
+\thispagestyle{empty}
+\begin{addmargin*}[4mm]{-32mm}
+    % Logo und Wortmarke
+    \begin{center}
+	    %\includegraphics[height=8cm]{images/hslogo}
+    \end{center}
+    
+    \vspace*{4.1em}
+
+    % Briefkopf
+    \footnotesize
+    \textbf{Universität Ulm} \textbar ~89075 Ulm \textbar ~Germany
+    \hfill
+    %\parbox[t]{42mm}{\bfseries \raggedright Fakultät für \fakultaet\\\mdseries\institut}
+    \vspace*{2cm}
+
+    % Titel
+    \parbox{140mm}{\bfseries \raggedright \huge \titel\\[1ex]
+			    	\Large \subtitel}
+
+    % Untertitel
+    {\arbeit{}}
+    \vspace*{4em}
+
+    % Prüfer etc.
+    \textbf{Vorgelegt von:}\\\fullname\\\email\\[2em]
+    %\textbf{Betreuer:}\\\betreuer\\[1.5em]
+    \jahr
+\end{addmargin*}
+
+
+%%
+%% Impressum
+%%
+\clearpage
+\thispagestyle{empty}
+{
+    % vollständiger Titel
+    \small \flushleft \enquote{\titel}\\
+    Fassung vom \today
+    \vfill
+
+
+    % Urheberrechtshinweis
+    \copyright{} \jahr{} \fullname{}\\[0.5em]
+    % Falls keine Lizenz gewünscht wird bitte den folgenden Text entfernen.
+    % Die Lizenz erlaubt es zu nichtkommerziellen Zwecken die Arbeit zu
+    % vervielfältigen und Kopien zu machen. Dabei muss aber immer der Autor
+    % angegeben werden. Eine kommerzielle Verwertung ist für den Autor
+    % weiter möglich.
+    Dieses Werk ist unter der Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Germany License lizensiert: \url{http://creativecommons.org/licenses/by-nc-sa/3.0/de/}\\
+    Satz: PDF-\LaTeXe{}\\
+}
+
+%%
+%% Inhaltsverzeichnis
+%%
+\setstretch{1.4}
+\tableofcontents
+%\listoftodos %hiermit wird ähnlich dem Inhaltsverzeichnis eine Liste aller offenen ToDo Einträge inkl. Link und Seitenzahl erstellt 
+
+%%
+%% Hauptteil
+%%
+\mainmatter
+
+\input{chapters/chapter1}
+
+% hier weitere Kapitel einbinden
+
+
+%%
+%% Anhänge
+%%
+%\appendix
+%\input{chapters/sources}
+
+
+%%
+%% Nachspann
+%%
+\backmatter
+
+\listoffigures
+
+%%
+%% Literaturverzeichnis
+%%
+\bibliography{mybibliography}
+
+
+%%
+%% Versicherung
+%%
+\cleardoublepage
+\thispagestyle{empty}
+
+Name: \fullname \hfill Matrikelnummer: \matnr \vspace{2cm}
+
+\minisec{Erklärung}
+
+Ich erkläre, dass ich die Arbeit selbständig verfasst und keine anderen als die angegebenen Quellen und Hilfsmittel verwendet habe.\vspace{2cm}
+
+Ulm, den \dotfill
+
+\hfill {\footnotesize \fullname}
+\end{document}
